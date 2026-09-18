@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1c20 0%, #0f1012 100%); /* Fondo oscuro elegante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden; /* Evita barras de desplazamiento por la animación */
+}
+
+/* Contenedor de las flores */
+#flower-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite hacer clic a través de las flores */
+    z-index: 1;
+}
+
+/* Estilo de la tarjeta central con efecto Glassmorphism */
+.message-box {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    z-index: 2;
+    max-width: 600px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    animation: fadeIn 2s ease-in-out;
+}
+
+.message-box h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: #ffd700;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.message-box p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #f1f1f1;
+}
+
+/* Animación de entrada para la tarjeta */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación individual para cada flor */
+.flower {
+    position: absolute;
+    top: -50px;
+    font-size: 2rem;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg); /* Cae más allá de la pantalla */
+        opacity: 0;
+    }
+}
+.static-flower {
+    position: absolute;
+    right: -45px; /* La empuja hacia afuera del lado derecho */
+    top: 50%; 
+    transform: translateY(-50%) rotate(15deg); 
+    font-size: 6rem; 
+    z-index: 3; 
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4)); 
+    transition: transform 0.3s ease; 
+}
+
+.static-flower2 {
+    position: absolute;
+    right: 512px; /* La empuja hacia afuera del lado derecho */
+    top: 50%; 
+    transform: translateY(-50%) rotate(-15deg); 
+    font-size: 6rem; 
+    z-index: 3; 
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4)); 
+    transition: transform 0.3s ease; 
+}
+
+@media (max-width: 600px) {
+    .static-flower {
+        right: -20px;
+        font-size: 4rem;
+    }
+}
