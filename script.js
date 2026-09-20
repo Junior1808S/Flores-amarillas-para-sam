@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const startScreen = document.getElementById('start-screen');
+    const startBtn = document.getElementById('start-btn');
+    const bgMusic = document.getElementById('bg-music');
+
+    startBtn.addEventListener('click', () => {
+        // 1. Reproducir la música
+        bgMusic.play();
+        
+        // 2. Desvanecer la pantalla de inicio
+        startScreen.style.opacity = '0';
+        
+        // 3. Eliminarla del DOM después de la transición
+        setTimeout(() => {
+            startScreen.style.display = 'none';
+        }, 800);
+    });
+    
     const container = document.getElementById("flower-container");
     
     // Array de emojis para darle variedad visual
