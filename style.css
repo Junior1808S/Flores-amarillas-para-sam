@@ -37,21 +37,22 @@ body {
     text-align: center;
     color: white;
     z-index: 2;
-    max-width: 600px;
+    max-width: 650px;
+    width: 90%;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     animation: fadeIn 2s ease-in-out;
 }
 
 .message-box h1 {
     font-family: 'Dancing Script', cursive;
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     color: #ffd700;
     margin-bottom: 1rem;
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .message-box p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     color: #f1f1f1;
 }
@@ -82,33 +83,62 @@ body {
 }
 .static-flower {
     position: absolute;
-    right: -45px; /* La empuja hacia afuera del lado derecho */
-    top: 50%; 
-    transform: translateY(-50%) rotate(15deg); 
-    font-size: 6rem; 
-    z-index: 3; 
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4)); 
-    transition: transform 0.3s ease; 
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 5rem;
+    z-index: 3;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
+    pointer-events: none; /* Evita que estorben al seleccionar texto */
+}
+/* Posición específica de la flor izquierda */
+.left-flower {
+    left: -40px;
+    transform: translateY(-50%) rotate(-15deg);
 }
 
-.static-flower2 {
-    position: absolute;
-    right: 512px; /* La empuja hacia afuera del lado derecho */
-    top: 50%; 
-    transform: translateY(-50%) rotate(-15deg); 
-    font-size: 6rem; 
-    z-index: 3; 
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4)); 
-    transition: transform 0.3s ease; 
+/* Posición específica de la flor derecha */
+.right-flower {
+    right: -40px;
+    transform: translateY(-50%) rotate(15deg);
 }
 
-@media (max-width: 600px) {
-    .static-flower {
-        right: -20px;
-        font-size: 4rem;
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto; /* Permite scroll general en la página si el texto es muy largo */
+        padding: 20px 0;
     }
-    .static-flower2 {
-        right: 467px;
-        font-size: 4rem;
+
+    .message-box {
+        padding: 2rem 1.5rem; /* Reducimos padding para ganar espacio útil */
+        max-width: 92%;
+        margin: auto;
+    }
+
+    .message-box h1 {
+        font-size: 2.4rem; /* H1 más compacto para pantallas chicas */
+    }
+
+    .message-box p {
+        font-size: 0.95rem; /* Texto legible pero optimizado */
+    }
+
+    /* Solución para las flores en celular: 
+       Las subimos discretamente a las esquinas superiores de la tarjeta 
+       para que no empujen los lados ni corten el texto largo. */
+    .static-flower {
+        font-size: 3rem;
+        top: -25px; 
+        transform: none;
+    }
+
+    .left-flower {
+        left: 10px;
+        transform: rotate(-15deg);
+    }
+
+    .right-flower {
+        right: 10px;
+        left: auto;
+        transform: rotate(15deg);
     }
 }
